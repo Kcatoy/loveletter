@@ -1,0 +1,223 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% static 'img/love-letter.png' %}">
+    <title>For My Love</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            position: relative;
+
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+        .greeting {
+            display: inline-block;
+            text-align: center;
+            justify-content: center;
+            font-size: 3em;
+            color: #ff69b4;
+            text-shadow: 2px 2px #ffb6c1;
+        }
+        .word {
+            font-size: 1.5em;
+            color: #ff69b4;
+            text-shadow: 2px 2px #ffb6c1;
+            margin: 10px 0;
+            opacity: 0;
+            transform: scale(0.1);
+            animation: pop-in 1s ease-out forwards;
+            display: block; /* Ensures each word is on its own line */
+
+        }
+
+        .message {
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden; /* Ensure overflow is hidden */
+            position: relative;
+            text-align: center;
+        }
+
+        .new-message {
+            display: none; /* Block display to allow wrapping */
+            font-size: 2em;
+            color: #ff1493;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            white-space: pre-wrap; /* Allow text to wrap */
+            overflow: hidden; /* Hide text that is not yet visible */
+            max-width: 100%; /* Full width of container, allows wrapping */
+            box-sizing: border-box; /* Include padding and border in width */
+        }
+        
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%; /* Ensures the typing animation stretches the entire width of the text container */
+            }
+        }
+        .word:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+        .word:nth-child(2) {
+            animation-delay: 1s;
+        }
+        .word:nth-child(3) {
+            animation-delay: 1.5s;
+        }
+        .word:nth-child(4) {
+            animation-delay: 2s;
+        }
+        .word:nth-child(5) {
+            animation-delay: 2.5s;
+        }
+        @keyframes pop-in {
+            0% {
+                transform: scale(0.1);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .confetti {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff69b4;
+            transform: rotate(45deg);
+            top: 0;
+            animation: confetti-fall 2s infinite;
+        }
+
+        .confetti::before,
+        .confetti::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff69b4;
+            border-radius: 50%;
+        }
+
+        .confetti::before {
+            top: -10px;
+            left: 0;
+        }
+        .confetti::after {
+            top: 0;
+            left: -10px;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        .message-button {
+            display: none; /* Hidden by default */
+            margin-top: 50px;
+            margin: 0 auto;
+            padding: 10px;
+            font-size: 1.3em;
+            color: white;
+            width: 200px;
+            background-color: #ff69b4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            position: relative;
+            animation: pop-in 1s ease-out forwards;
+        }
+        .message-button:hover {
+            background-color: #ff1493;
+            animation: pop-in 1s ease-out forwards;
+        }
+
+        .message a{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="greeting">
+            <span class="word">HAPPY</span>
+            <span class="word">1ST</span>
+            <span class="word">MONTHSARY!</span>
+            <span class="word">MY</span>
+            <span class="word">LOVE!</span>
+        </div>
+        <div class='message'>
+        <div class="new-message" id='message'>My amazing mahal! I know this is not new but I have made a letter for you and I hope it can give you and idea on how amazing you really are as my partner, my lovey!!</div>
+        <a href="/letter/" class="message-button" style="text-align: center;">READ THE LETTER</a> 
+    </div>
+    </div>
+    <script>
+        // Confetti Animation
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+
+        setInterval(createConfetti, 300);
+
+        function typeEffect(element, text, speed) {
+            let i = 0;
+            element.textContent = '';
+            const intervalId = setInterval(() => {
+                element.textContent += text[i];
+                i++;
+                if (i > text.length - 1) {
+                    clearInterval(intervalId);
+                }
+            }, speed);
+        }
+
+          // Remove the greetings and show new message
+          setTimeout(() => {
+            document.querySelector('.greeting').style.display = 'none';
+            const messageElement = document.getElementById('message');
+            typeEffect(messageElement, messageElement.textContent, 80); // Adjust s
+            document.querySelector('.new-message').style.display = 'block';
+        }, 6000); // Remove greetings after 1 second
+
+        setTimeout(() => {
+            document.querySelector('.message-button').style.display = 'flex';
+        }, 25000);
+    </script>
+</body>
+</html>

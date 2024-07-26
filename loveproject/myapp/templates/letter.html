@@ -1,0 +1,82 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% static 'img/love-letter.png' %}">
+    <title>Letter for my Love</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-position: center;
+            background-repeat: repeat;
+            background-image: url('/static/img/bg.jpg'); /* Path to your image */
+        }
+
+        .letter-container {
+            margin: 50px;
+            width: 60%;
+            max-width: 800px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            font-size: 1.2em;
+        }
+
+        .letter-header {
+            border-bottom: 2px solid gray;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+
+        .letter-body {
+            margin-bottom: 20px;
+            margin-left: 30px;
+            text-align: justify;
+        }
+
+        .letter-footer {
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            font-style: italic;
+            color: #666;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="letter-container">
+        <div class="letter-header">
+            <h1>My Love,</h1>
+        </div>
+        <div class="letter-body">
+            <p>Happy 1st Monthsary, my love!</p>
+            <p>I have been contemplating for days on what should I be doing when this day comes knowing na malayo tayo sa isa't-isa the choice that I have left is to give you a virtual affection of my love hehehe with a twist (little twist). I hope this letter finds you well and I want to watch you while you read this. I really don't know what to say mahal there are a lot of words in my mind that I can't just simply write down cause I am not that vocal but here I am typing down some of it and I know you'll appreciate every word this contains.</p>
+            <p>It's been a month love and within that month there are so many things that you made me realize especially about my self-worth, before you I always think that I am hard to love because of what I am. I just want you to know how grateful I am that I get to call you as my partner, my love, hubby ko, mahal ko, my palagi. You really be doing things effortlessly for me and those are the times that I can feel your love the most and sana I am doing the same thing to you na sana mahal ko you can also feel my best of trying to show you my love. There's nothing much left sakin kasi I was drained by my past but for you I will always make the best out of everything kasi you are worthy of it because you make me feel more than that, no one is prouder than you for having me as your girlfriend and that makes me think every single day na ka-proud proud din pala ako and I thank you for that, now somehow I don't see myself any less than before. This is just the first month for so many months and years to come, to forever! I hope we will stay faithful to each other po sana yung misunderstandings natin will make our bond much stronger na we will always find a way to fix everything kasi same as you mahal ko ayoko ng kumilala ng iba, I don't want to start all over again, I want to commit on one person na lang and alam kong ikaw yun wala ng iba kasi kung di ikaw yun, I'd rather be alone forever because no one deserves my love more than you do, you know how to receive and reciprocate my love.</p>
+            <p>I really miss you mahal ko, I want to cry everytime iniisip ko na malayo ka sakin but seeing you on my screen makes it better somehow. Merely just your presence can make my day brighter and my life more meaningful. All I can do now is cherished what we have shared while we're together and to look forward for so many quality time ahead of us. </p>
+            <p>I love you love, I know you feel greater love for me but I feel more than that to the point that I can't put them into words. Thank you for loving me and I will endlessly love you too, I will support you in everything. Happy 1st monthsary mahal! cheers to the first month of many more months to come! I miss you and I love you beyond words! counting days to see you! mwaaaaa!</p>
+            <p>With all my love,</p>
+            <p>Your love</p>
+        </div>
+        <div class="letter-footer">
+            <p>P.S. I can’t wait to see you soon!</p>
+        </div>
+    </div>
+    <script>
+        var audio = new Audio('{% static "audio/balisong.mp3" %}');
+        audio.autoplay = true;
+        audio.loop = true;
+    </script>
+</body>
+</html>
